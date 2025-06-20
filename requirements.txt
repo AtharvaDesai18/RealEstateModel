@@ -1,7 +1,7 @@
 setuptools>=60
 wheel>=0.36
 streamlit
-scikit-learn
+scikit-learn==1.0.2
 pandas
 joblib
 plotly
