@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib  # ✅ Use joblib instead of pickle
 import plotly.express as px
 import os
 import random
@@ -15,8 +15,7 @@ model = None
 
 if os.path.exists("xgboost.pkl"):
     try:
-        with open("xgboost.pkl", "rb") as f:
-            model = pickle.load(f)
+        model = joblib.load("xgboost.pkl")  # ✅ Load with joblib
         st.success("✅ Model loaded successfully.")
     except Exception as e:
         st.error(f"❌ Failed to load model: {e}")
@@ -34,7 +33,7 @@ with st.form("predict_form"):
 
 # --- Prediction ---
 if submit:
-    if model:
+    if model is not None:  # ✅ Fix: explicit check
         input_df = pd.DataFrame([{
             "city": city.title().strip(),
             "area": area,
@@ -80,7 +79,6 @@ if st.button("Calculate EMI"):
         st.info(f"💳 Monthly EMI: ₹{emi:,.2f}")
     except Exception as e:
         st.error(f"EMI Calculation Error: {e}")
-
 
 # --- ROI Calculator ---
 st.subheader("📈 ROI Calculator (Rental Return)")
