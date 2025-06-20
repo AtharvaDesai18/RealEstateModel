@@ -2,6 +2,5 @@ streamlit
 pandas
 numpy
 plotly
-scikit-learn
 xgboost
 scikit-learn==1.0.2
