@@ -33,7 +33,7 @@ with st.form("predict_form"):
 
 # --- Prediction ---
 if submit:
-    if model is not None:  # ✅ Fix: explicit check
+    if model is not None:  # ✅ Safe explicit check
         input_df = pd.DataFrame([{
             "city": city.title().strip(),
             "area": area,
@@ -46,6 +46,7 @@ if submit:
             st.error(f"❌ Prediction error: {e}")
     else:
         st.error("🚫 Model not loaded. Please check `xgboost.pkl`")
+
 
 # --- Heatmap (Dummy Sample) ---
 st.subheader("📍 Heatmap of Property Prices (Sample)")
