@@ -1,10 +1,11 @@
+pip>=23.2
+setuptools>=65.5
 wheel>=0.36
+
+# App dependencies
 streamlit
 scikit-learn==1.0.2
 pandas
 joblib
 plotly
 xgboost
-pip>=23.2
-setuptools>=65.5
-
